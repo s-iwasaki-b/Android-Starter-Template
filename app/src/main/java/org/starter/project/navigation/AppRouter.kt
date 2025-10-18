@@ -23,5 +23,6 @@ class AppRouterImpl(
 fun rememberAppRouter(
     backStack: NavBackStack<NavKey>
 ) = remember(backStack) {
+    @Suppress("UNCHECKED_CAST")
     AppRouterImpl(backStack as NavBackStack<AppRoute>)
 }
