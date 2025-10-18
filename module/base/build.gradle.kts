@@ -3,6 +3,8 @@ private val MODULE_NAME = "base"
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.devtools.ksp)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -33,9 +35,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 dependencies {
-    implementation(libs.bundles.base)
+    ksp(libs.dagger.hilt.android.compiler)
+    api(libs.bundles.base)
+    implementation(platform(libs.compose))
     testImplementation(libs.bundles.test)
 }

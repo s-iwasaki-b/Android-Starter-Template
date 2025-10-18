@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="loading_failure_default_message">読み込みに失敗しました</string>
+    <string name="loading_failure_default_action_label">再読み込み</string>
+
+    <!-- Design System -->
+    <string name="search_bar_default_placeholder">パブリケーション名またはユーザ名</string>
+    <string name="search_bar_default_action">検索</string>
+</resources>

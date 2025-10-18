@@ -3,6 +3,7 @@ private val MODULE_NAME = "domain.service"
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.devtools.ksp)
 }
 
 android {
@@ -33,9 +34,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 dependencies {
+    api(project(":module:base"))
+    ksp(libs.dagger.hilt.android.compiler)
     implementation(libs.bundles.domain)
     testImplementation(libs.bundles.test)
 }

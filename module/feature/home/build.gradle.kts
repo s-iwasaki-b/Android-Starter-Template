@@ -3,6 +3,8 @@ private val MODULE_NAME = "feature.home"
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.devtools.ksp)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -33,9 +35,19 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
-    implementation(libs.bundles.ui)
+    api(project(":module:base"))
+    implementation(project(":module:ui"))
+    implementation(project(":module:domain:zenn"))
+    ksp(libs.dagger.hilt.android.compiler)
+    implementation(libs.bundles.feature.home)
     testImplementation(libs.bundles.test)
 }

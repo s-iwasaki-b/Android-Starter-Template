@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -27,8 +28,10 @@
             <option value="$PROJECT_DIR$/module/core" />
             <option value="$PROJECT_DIR$/module/data" />
             <option value="$PROJECT_DIR$/module/data/repository" />
+            <option value="$PROJECT_DIR$/module/data/zenn" />
             <option value="$PROJECT_DIR$/module/domain" />
             <option value="$PROJECT_DIR$/module/domain/service" />
+            <option value="$PROJECT_DIR$/module/domain/zenn" />
             <option value="$PROJECT_DIR$/module/feature" />
             <option value="$PROJECT_DIR$/module/feature/home" />
             <option value="$PROJECT_DIR$/module/mylibrary" />

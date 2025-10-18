@@ -49,5 +49,5 @@ dependencies {
     implementation(platform(libs.compose))
     implementation(libs.bundles.app)
     testImplementation(libs.bundles.test)
-    allSubProjects(rootDir) { runtimeOnly(project(":$it")) }
+    allSubProjects(rootDir) { implementation(project(":$it")) }
 }
