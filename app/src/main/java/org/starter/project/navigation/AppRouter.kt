@@ -7,7 +7,7 @@ import androidx.navigation3.runtime.NavKey
 import org.starter.project.ui.route.AppRoute
 import org.starter.project.ui.route.AppRouter
 
-class AppRouterImpl(
+internal class AppRouterImpl(
     internal val backStack: NavBackStack<AppRoute>
 ) : AppRouter {
     override fun navigate(route: AppRoute) {
@@ -20,7 +20,7 @@ class AppRouterImpl(
 }
 
 @Composable
-fun rememberAppRouter(
+internal fun rememberAppRouter(
     backStack: NavBackStack<NavKey>
 ) = remember(backStack) {
     @Suppress("UNCHECKED_CAST")

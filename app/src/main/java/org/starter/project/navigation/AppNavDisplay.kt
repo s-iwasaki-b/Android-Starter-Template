@@ -8,7 +8,7 @@ import org.starter.project.feature.home.HomeScreen
 import org.starter.project.ui.route.AppRoute
 
 @Composable
-fun AppNavDisplay(
+internal fun AppNavDisplay(
     appRouter: AppRouterImpl
 ) {
     NavDisplay(
