@@ -10,13 +10,14 @@ import org.starter.project.base.data.model.zenn.Article
 
 internal fun LazyListScope.articleList(
     articlesPagingItems: LazyPagingItems<Article>,
+    onClick: (id: Int) -> Unit
 ) {
     items(
         count = articlesPagingItems.itemCount,
         key = { index -> "article_list_items_$index" }
     ) { index ->
         val article = articlesPagingItems[index] ?: return@items
-        ArticleListItem(article = article)
+        ArticleListItem(article = article, onClick = onClick)
         Spacer(modifier = Modifier.height(16.dp))
     }
 }

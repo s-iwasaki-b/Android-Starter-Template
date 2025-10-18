@@ -3,6 +3,7 @@ package org.starter.project.feature.home.component.article
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,7 +29,8 @@ import org.starter.project.ui.design.system.theme.SystemTheme
 
 @Composable
 internal fun ArticleListItem(
-    article: Article
+    article: Article,
+    onClick: (id: Int) -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -40,6 +42,7 @@ internal fun ArticleListItem(
                 color = SystemTheme.colors.onSurface.copy(alpha = 0.12f),
                 shape = RoundedCornerShape(8.dp)
             )
+            .clickable { onClick(article.id) }
             .padding(vertical = 8.dp, horizontal = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)

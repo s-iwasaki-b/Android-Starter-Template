@@ -22,32 +22,32 @@ import org.starter.project.feature.home.component.article.articleList
 import org.starter.project.ui.design.system.scaffold.SystemScaffold
 import org.starter.project.ui.design.system.search.SystemSearchBar
 import org.starter.project.ui.design.system.theme.SystemTheme
+import org.starter.project.ui.route.AppRouter
 import org.starter.project.ui.shared.event.ScreenEvent
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeScreenViewModel = viewModel()
+    viewModel: HomeScreenViewModel = viewModel(),
+    appRouter: AppRouter
 ) {
     val state by viewModel.state.collectAsState()
     val articlesPagingItems = viewModel.articlesPagingFlow.collectAsLazyPagingItems()
 
-    // This is an example of lifecycle event listener
-    // cf. https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-lifecycle.html#mapping-android-lifecycle-to-other-platforms
     LifecycleEventEffect(Lifecycle.Event.ON_START) {
         viewModel.initSearchKeyword()
     }
 
     HomeScreenContent(
         state = state,
-        articlesPagingItems = articlesPagingItems,
-        dispatch = { event ->
-            HomeScreenEventHandler(
-                event = event,
-                viewModel = viewModel,
-                articlesPagingItems = articlesPagingItems
-            )
-        }
-    )
+        articlesPagingItems = articlesPagingItems
+    ) { event ->
+        HomeScreenEventHandler(
+            event = event,
+            appRouter = appRouter,
+            viewModel = viewModel,
+            articlesPagingItems = articlesPagingItems
+        )
+    }
 }
 
 @Composable
@@ -89,7 +89,10 @@ private fun HomeScreenContent(
                     onTapAction = { dispatch(HomeScreenEvent.OnTapActionSearchKeyword) }
                 )
             }
-            articleList(articlesPagingItems)
+            articleList(
+                articlesPagingItems = articlesPagingItems,
+                onClick = { dispatch(HomeScreenEvent.OnTapArticle(it)) }
+            )
         }
     }
 }

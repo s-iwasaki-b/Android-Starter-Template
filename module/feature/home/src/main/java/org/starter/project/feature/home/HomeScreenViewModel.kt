@@ -9,6 +9,7 @@ import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
@@ -33,7 +34,7 @@ class HomeScreenViewModel @Inject constructor(
     private val _state = MutableStateFlow(
         HomeScreenState(screenState = _screenState.value)
     )
-    internal val state = combine(
+    internal val state: StateFlow<HomeScreenState> = combine(
         _screenState,
         _state
     ) { screenState, state ->
