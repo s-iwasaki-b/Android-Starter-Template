@@ -30,7 +30,7 @@ import org.starter.project.ui.design.system.theme.SystemTheme
 @Composable
 internal fun ArticleListItem(
     article: Article,
-    onClick: (id: Int) -> Unit
+    onClick: (article: Article) -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -42,7 +42,7 @@ internal fun ArticleListItem(
                 color = SystemTheme.colors.onSurface.copy(alpha = 0.12f),
                 shape = RoundedCornerShape(8.dp)
             )
-            .clickable { onClick(article.id) }
+            .clickable { onClick(article) }
             .padding(vertical = 8.dp, horizontal = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)

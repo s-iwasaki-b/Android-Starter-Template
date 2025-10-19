@@ -11,7 +11,7 @@ internal sealed interface HomeScreenEvent : ScreenEvent {
     data class OnChangeSearchKeyword(val keyword: String) : HomeScreenEvent
     data object OnTapClearSearchKeyword : HomeScreenEvent
     data object OnTapActionSearchKeyword : HomeScreenEvent
-    data class OnTapArticle(val id: Int) : HomeScreenEvent
+    data class OnTapArticle(val article: Article) : HomeScreenEvent
 }
 
 internal object HomeScreenEventHandler {
@@ -40,7 +40,8 @@ internal object HomeScreenEventHandler {
             }
 
             is HomeScreenEvent.OnTapArticle -> {
-                appRouter.navigate(AppRoute.Detail(AppRoute.Detail.NavArgs(event.id)))
+                val article = event.article
+                appRouter.navigate(AppRoute.Detail(AppRoute.Detail.NavArgs(article.id, article.title)))
             }
 
             else -> {

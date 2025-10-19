@@ -27,7 +27,7 @@ import org.starter.project.ui.shared.event.ScreenEvent
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeScreenViewModel = viewModel(),
+    viewModel: HomeScreenViewModel,
     appRouter: AppRouter
 ) {
     val state by viewModel.state.collectAsState()

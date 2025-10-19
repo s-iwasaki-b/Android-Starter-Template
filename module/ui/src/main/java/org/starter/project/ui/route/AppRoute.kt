@@ -11,7 +11,7 @@ sealed interface AppRoute : NavKey {
     @Serializable
     data class Detail(val navArgs: NavArgs) : AppRoute {
         @Serializable
-        data class NavArgs(val id: Int)
+        data class NavArgs(val id: Int, val title: String)
     }
 }
 

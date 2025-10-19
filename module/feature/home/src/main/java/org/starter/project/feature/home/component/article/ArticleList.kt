@@ -10,7 +10,7 @@ import org.starter.project.base.data.model.zenn.Article
 
 internal fun LazyListScope.articleList(
     articlesPagingItems: LazyPagingItems<Article>,
-    onClick: (id: Int) -> Unit
+    onClick: (article: Article) -> Unit
 ) {
     items(
         count = articlesPagingItems.itemCount,
